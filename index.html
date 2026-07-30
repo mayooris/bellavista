@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bella Vista Restaurant</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200') center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>Bella Vista</h1>
+            </div>
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#menu" onclick="showSection('menu')">Menu</a></li>
+                <li><a href="#gallery" onclick="showSection('gallery')">Gallery</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+                <li><a href="#booking" onclick="showSection('booking')">Book Table</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="content-section active">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <h2>Welcome to Bella Vista</h2>
+                    <p>Experience Fine Dining at its Best</p>
+                    <button class="cta-button" onclick="showSection('booking')">Reserve Now</button>
+                </div>
+            </div>
+            
+            <article class="intro-article">
+                <h3>Our Story</h3>
+                <p>Bella Vista has been serving exquisite Italian cuisine for over 20 years. Our passion for authentic flavors and warm hospitality creates an unforgettable dining experience.</p>
+            </article>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="content-section">
+            <h2>Our Menu</h2>
+            <div class="menu-container">
+                <table class="menu-table">
+                    <thead>
+                        <tr>
+                            <th>Dish</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Margherita Pizza</td>
+                            <td>Fresh mozzarella, tomatoes, basil</td>
+                            <td>$18</td>
+                        </tr>
+                        <tr>
+                            <td>Pasta Carbonara</td>
+                            <td>Creamy sauce with pancetta and parmesan</td>
+                            <td>$22</td>
+                        </tr>
+                        <tr>
+                            <td>Osso Buco</td>
+                            <td>Braised veal shanks with risotto</td>
+                            <td>$35</td>
+                        </tr>
+                        <tr>
+                            <td>Tiramisu</td>
+                            <td>Classic Italian dessert</td>
+                            <td>$12</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="content-section">
+            <h2>Gallery</h2>
+            <div class="photo-gallery">
+                <div class="photo-item" onclick="openModal('https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800')">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400" alt="Restaurant Interior">
+                </div>
+                <div class="photo-item" onclick="openModal('https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=800')">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400" alt="Delicious Food">
+                </div>
+                <div class="photo-item" onclick="openModal('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800')">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400" alt="Dining Area">
+                </div>
+                <div class="photo-item" onclick="openModal('https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800')">
+                    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400" alt="Chef Special">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Visit Us</h3>
+                    <p><strong>Address:</strong> 123 Gourmet Street, Food District</p>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> info@bellavista.com</p>
+                    <p><strong>Hours:</strong> Mon-Sun 5:00 PM - 11:00 PM</p>
+                </div>
+                
+                <form class="contact-form" onsubmit="submitContactForm(event)">
+                    <h3>Send Message</h3>
+                    <input type="text" id="contactName" placeholder="Your Name" required>
+                    <input type="email" id="contactEmail" placeholder="Your Email" required>
+                    <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Booking Section -->
+        <section id="booking" class="content-section">
+            <h2>Reserve Your Table</h2>
+            <form class="booking-form" onsubmit="submitBooking(event)">
+                <div class="form-group">
+                    <label for="bookingName">Full Name:</label>
+                    <input type="text" id="bookingName" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingEmail">Email:</label>
+                    <input type="email" id="bookingEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingPhone">Phone:</label>
+                    <input type="tel" id="bookingPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingDate">Date:</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingTime">Time:</label>
+                    <input type="time" id="bookingTime" min="17:00" max="22:00" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookingGuests">Number of Guests:</label>
+                    <select id="bookingGuests" required>
+                        <option value="">Select...</option>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5+">5+ Guests</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests:</label>
+                    <textarea id="specialRequests" rows="3"></textarea>
+                </div>
+                <button type="submit">Reserve Table</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Gallery Image">
+        </div>
+    </div>
+
+    <iframe id="promoFrame" src="about:blank" style="display:none;" width="100%" height="200"></iframe>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Bella Vista Restaurant. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#" onmouseover="highlightSocial(this)" onmouseout="unhighlightSocial(this)">Facebook</a>
+            <a href="#" onmouseover="highlightSocial(this)" onmouseout="unhighlightSocial(this)">Instagram</a>
+            <a href="#" onmouseover="highlightSocial(this)" onmouseout="unhighlightSocial(this)">Twitter</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
